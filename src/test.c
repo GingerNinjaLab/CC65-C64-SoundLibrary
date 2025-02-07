@@ -25,7 +25,7 @@ int main (void)
     cprintf("sound library test\r\n");
     cprintf("==================\r\n");
 
-    cprintf("1. zap                     a. clunk\r\n");
+    cprintf("1. zap\r\n");
     cprintf("2. ufo\r\n");
     cprintf("3. woosh\r\n");
     cprintf("4. siren\r\n");
@@ -66,7 +66,7 @@ void Test() {
     SND_SetVolume(15);
 
     //Put testing sounds here...
-    
+
     ClearPlaying();
 }
 

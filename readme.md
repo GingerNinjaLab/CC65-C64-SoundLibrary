@@ -21,6 +21,10 @@ The example has some examples:
 3. woosh
 4. siren
 5. random comp music
+6. chime
+7. clunk
+8. high chime
+9. alarm chime
 
 Plese feel free to comment/amend and feedback.
 If you come up with some nice sound effects please do share.
