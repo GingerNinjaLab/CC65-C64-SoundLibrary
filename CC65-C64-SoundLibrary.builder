@@ -4,6 +4,7 @@
     "general": {
         "disk": "CC65-C64-SoundLibrary", 
         "code": [
+            "projects/CC65-C64-SoundLibrary/src/Sounds.c",
             "projects/CC65-C64-SoundLibrary/src/test.c", 
             "projects/CC65-C64-SoundLibrary/src/SoundLibrary.c"
         ], 

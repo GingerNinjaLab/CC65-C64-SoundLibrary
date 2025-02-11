@@ -1,3 +1,17 @@
+typedef struct {
+	unsigned int PitchLow;
+	unsigned int PitchHigh;
+	unsigned int WidthLow;
+	unsigned int WidthHigh;
+	unsigned int Attack;
+	unsigned int Decay;
+	unsigned int Sustain;
+	unsigned int Release;
+	unsigned int WaveformBits;
+} Snd_Parameters;
+
+
+
 //Sound parameters:
 #define SND_PITCH_LOW_1 54272
 #define SND_PITCH_HIGH_1 54273
@@ -31,19 +45,19 @@
 #define SND_ENVELOPE_GENERATOR 54300
 
 #define SND_WAV_BITS_DISABLE 0b00000000
-#define SND_WAV_BITS_NOISE 0b10000001
-#define SND_WAV_BITS_PULSE 0b01000001
-#define SND_WAV_BITS_SAW 0b00100001
-#define SND_WAV_BITS_TRI 0b00010001
-#define SND_WAV_BITS_RING 0b00000101
-#define SND_WAV_BITS_SYNC 0b00000011
+  #define SND_WAV_BITS_NOISE 0b10000001
+  #define SND_WAV_BITS_PULSE 0b01000001
+    #define SND_WAV_BITS_SAW 0b00100001
+    #define SND_WAV_BITS_TRI 0b00010001
+   #define SND_WAV_BITS_RING 0b00000101
+   #define SND_WAV_BITS_SYNC 0b00000011
 
 
 #define SND_SetVolume(vol); POKE(SND_VOLUME_PASS_FILTER_BITS,vol);
 
 #define SND_SetVoice1Bits(wavbits); POKE(SND_WAV_BITS_1,wavbits);
-#define SND_SetVoice1DecayAttack(decayattack); POKE(SND_DECAY_ATTACK_1,decayattack);
-#define SND_SetVoice1ReleaseSustain(releasesustain); POKE(SND_RELEASE_SUSTAIN_1,releasesustain);
+#define SND_SetVoice1AttackDecay(AttackDecay); POKE(SND_DECAY_ATTACK_1,AttackDecay);
+#define SND_SetVoice1SustainRelease(SustainRelease); POKE(SND_RELEASE_SUSTAIN_1,SustainRelease);
 #define SND_SetVoice1HighLow(pitchhigh,pitchlow); POKE(SND_PITCH_HIGH_1,pitchhigh);POKE(SND_PITCH_LOW_1,pitchlow);
 #define SND_SetVoice1LowHigh(pitchlow,pitchhigh); POKE(SND_PITCH_LOW_1,pitchlow);POKE(SND_PITCH_HIGH_1,pitchhigh);
 #define SND_SetVoice1High(pitchhigh); POKE(SND_PITCH_HIGH_1,pitchhigh);
@@ -52,8 +66,8 @@
 #define SND_SetVoice1PulseWidthLow(pulselow); POKE(SND_PULSE_WIDTH_LOW_1,pulselow);
 
 #define SND_SetVoice2Bits(wavbits); POKE(SND_WAV_BITS_2,wavbits);
-#define SND_SetVoice2DecayAttack(decayattack); POKE(SND_DECAY_ATTACK_2,decayattack);
-#define SND_SetVoice2ReleaseSustain(releasesustain); POKE(SND_RELEASE_SUSTAIN_2,releasesustain);
+#define SND_SetVoice2AttackDecay(AttackDecay); POKE(SND_DECAY_ATTACK_2,AttackDecay);
+#define SND_SetVoice2SustainRelease(SustainRelease); POKE(SND_RELEASE_SUSTAIN_2,SustainRelease);
 #define SND_SetVoice2HighLow(pitchhigh,pitchlow); POKE(SND_PITCH_HIGH_2,pitchhigh);POKE(SND_PITCH_LOW_2,pitchlow);
 #define SND_SetVoice2LowHigh(pitchlow,pitchhigh); POKE(SND_PITCH_LOW_2,pitchlow);POKE(SND_PITCH_HIGH_2,pitchhigh);
 #define SND_SetVoice2High(pitchhigh); POKE(SND_PITCH_HIGH_2,pitchhigh);
@@ -62,8 +76,8 @@
 #define SND_SetVoice2PulseWidthLow(pulselow); POKE(SND_PULSE_WIDTH_LOW_2,pulselow);
 
 #define SND_SetVoice3Bits(wavbits); POKE(SND_WAV_BITS_3,wavbits);
-#define SND_SetVoice3DecayAttack(decayattack); POKE(SND_DECAY_ATTACK_3,decayattack);
-#define SND_SetVoice3ReleaseSustain(releasesustain); POKE(SND_RELEASE_SUSTAIN_3,releasesustain);
+#define SND_SetVoice3AttackDecay(AttackDecay); POKE(SND_DECAY_ATTACK_3,AttackDecay);
+#define SND_SetVoice3SustainRelease(SustainRelease); POKE(SND_RELEASE_SUSTAIN_3,SustainRelease);
 #define SND_SetVoice3HighLow(pitchhigh,pitchlow); POKE(SND_PITCH_HIGH_3,pitchhigh);POKE(SND_PITCH_LOW_3,pitchlow);
 #define SND_SetVoice3LowHigh(pitchlow,pitchhigh); POKE(SND_PITCH_LOW_3,pitchlow);POKE(SND_PITCH_HIGH_3,pitchhigh);
 #define SND_SetVoice3High(pitchhigh); POKE(SND_PITCH_HIGH_3,pitchhigh);
@@ -71,7 +85,39 @@
 #define SND_SetVoice3PulseWidthHigh(pulsehigh); POKE(SND_PULSE_WIDTH_HIGH_3,pulsehigh);
 #define SND_SetVoice3PulseWidthLow(pulselow); POKE(SND_PULSE_WIDTH_LOW_3,pulselow);
 
+#define SND_End 0
+#define SND_Wait 255
+#define SND_V1Wav 1
+#define SND_V1PiHigh 2
+#define SND_V1PiLow 3
+#define SND_V1PlHigh 4
+#define SND_V1PlLow 5
+#define SND_V1AttDec 6
+#define SND_V1SusRel 7
+#define SND_V2Wav 8
+#define SND_V2PiHigh 9
+#define SND_V2PiLow 10
+#define SND_V2PlHigh 11
+#define SND_V2PlLow 12
+#define SND_V2AttDec 13
+#define SND_V2SusRel 14
+#define SND_V3Wav 15
+#define SND_V3PiHigh 16
+#define SND_V3PiLow 17
+#define SND_V3PlHigh 18
+#define SND_V3PlLow 19
+#define SND_V3AttDec 20
+#define SND_V3SusRel 21
+#define SND_Vol 22
+#define SND_V1Rise 23
+#define SND_Count 24
+#define SND_Repeat 15
+
+
+#define SND_Envelop
 //=========================================================
 void SND_ClearSoundRegisters();
+unsigned char SND_GetEnv(unsigned char high,unsigned char low);
+void SND_PLay(unsigned char *arr,int size);
 //=========================================================
 
