@@ -171,3 +171,15 @@ unsigned char sfx3[150]= {
     SND_End
 };
 
+unsigned char sxf_switch[150]= {
+    SND_Vol,15,
+    SND_V1Wav,SND_WAV_BITS_NOISE,
+    SND_V1AttDec,SND_HIGH_03 + SND_LOW_04,
+    SND_V1SusRel,SND_HIGH_05 + SND_LOW_01,
+    SND_Count,3,
+    SND_V1PiLow,10,
+    SND_V1PiHigh,30,
+    SND_Wait,32,
+    SND_Repeat,6,    
+    SND_End
+};

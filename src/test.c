@@ -15,6 +15,7 @@ Snd_Parameters* params;
 extern unsigned char sfx[150];
 extern unsigned char sfx2[150];
 extern unsigned char sfx3[150];
+extern unsigned char sxf_switch[150];
 
 int main (void)
 {
@@ -74,7 +75,7 @@ int main (void)
 
 void Test() {
     clrscr();
-    SND_PLay(sfx3,200);
+    SND_PLay(sxf_switch,200);
 }
 
 void fgff(){
