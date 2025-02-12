@@ -3,7 +3,7 @@
 #include "SoundLibrary.h"
 #include "test.h"
 
-char k;
+char k,c;
 unsigned char bits;
 int n,j,h,l,x,y,z,w,i;
 int r1,r2,r3;
@@ -16,6 +16,8 @@ extern unsigned char sfx[150];
 extern unsigned char sfx2[150];
 extern unsigned char sfx3[150];
 extern unsigned char sxf_switch[150];
+
+unsigned char textBuffer[800];
 
 int main (void)
 {
@@ -30,9 +32,18 @@ int main (void)
     SND_ClearSoundRegisters();
 
     clrscr();
+
+
     cprintf("sound library test\r\n");
     cprintf("==================\r\n");
 
+    while (1) {
+
+        k = cgetc();
+        c = InputStr(20, *textBuffer, 20, k);
+
+    }
+    
     cprintf("1. zap\r\n");
     cprintf("2. ufo\r\n");
     cprintf("3. woosh\r\n");
@@ -45,6 +56,10 @@ int main (void)
     cprintf("0. nasty\r\n");
     cprintf("a. bump\r\n");
     cprintf("b. buzz\r\n");
+
+    
+
+
 
     while (1) {
 
