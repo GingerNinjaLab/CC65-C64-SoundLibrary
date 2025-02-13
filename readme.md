@@ -109,3 +109,63 @@ Neat!
 
 
 
+
+
+Gentle tone
+
+    SND_STEP_Vol,15,
+    SND_STEP_VolumePassFilter,31,
+    SND_STEP_ResonanceBits,1,
+    SND_STEP_V1PlHigh,8,
+    SND_STEP_V1AttDec,0,
+    SND_STEP_V1SusRel,240,
+    SND_STEP_V1PiHigh,15,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1Wav,SND_WAV_BITS_TRI,
+    SND_STEP_RiseValue,250,
+    SND_STEP_CutoffHigh,32,
+    SND_STEP_End
+
+
+Odd snare
+
+    SND_STEP_Vol,15,
+    SND_STEP_V1AttDec,0,
+    SND_STEP_V1SusRel,240,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,32,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,0,
+    SND_STEP_V1PiHigh,0,
+    SND_STEP_Wait,16,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,0,
+    SND_STEP_V1PiHigh,0,
+
+    SND_STEP_End

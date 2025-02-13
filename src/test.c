@@ -18,7 +18,11 @@ extern unsigned char sfx3[150];
 extern unsigned char sxf_switch[150];
 extern unsigned char sfx_lowBeep[150];
 extern unsigned char sfx_lowboop[150];
-extern unsigned char sfx_testing[150];
+extern unsigned char sfx_buzzzap[150];
+extern unsigned char sfx_test[150];
+extern unsigned char sfx_dooropen[100];
+extern unsigned char sfx_crash[100];
+extern unsigned char sfx_shortrumble[50];
 
 unsigned char textBuffer[800];
 
@@ -55,11 +59,11 @@ int main (void)
     cprintf("b. buzz\r\n");
     cprintf("c. low beep\r\n");
     cprintf("d. low boop\r\n");
-
+    cprintf("e. buzz zap\r\n");
+    cprintf("f. door open\r\n");
+    cprintf("g. crash\r\n");
+    cprintf("h. short rumble\r\n");
     
-
-
-
     while (1) {
 
         k = cgetc();
@@ -80,9 +84,13 @@ int main (void)
         if (k=='b') { Bump(); }
         if (k=='c') { SND_PLay(sfx_lowBeep,200); }
         if (k=='d') { SND_PLay(sfx_lowboop,200); }
+        if (k=='e') { SND_PLay(sfx_buzzzap,200); }
+        if (k=='f') { SND_PLay(sfx_dooropen,200); }
+        if (k=='g') { SND_PLay(sfx_crash,200); }
+        if (k=='h') { SND_PLay(sfx_shortrumble,50); }
 
         if (k=='t') {
-            SND_PLay(sfx_testing,200);
+            SND_PLay(sfx_test,200);
         }
 
         ClearPlaying();

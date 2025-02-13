@@ -210,7 +210,7 @@ unsigned char sfx_lowboop[150]= {
     SND_STEP_End
 };
 
-unsigned char sfx_testing[150]= {
+unsigned char sfx_buzzzap[150]= {
     SND_STEP_Vol,15,
     SND_STEP_VolumePassFilter,31,
     SND_STEP_ResonanceBits,1,
@@ -224,6 +224,92 @@ unsigned char sfx_testing[150]= {
     SND_STEP_CutoffHigh,32,
     SND_STEP_V1Wav,0,
     SND_STEP_V2Wav,0,
+    SND_STEP_End
+};
+
+unsigned char sfx_dooropen[30]= {
+    SND_STEP_Vol,15,
+    SND_STEP_VolumePassFilter,31,
+    SND_STEP_ResonanceBits,1,
+    SND_STEP_V1PlHigh,8,
+    SND_STEP_V1AttDec,0,
+    SND_STEP_V1SusRel,240,
+    SND_STEP_V1PiHigh,10,
+    SND_STEP_V1PiLow,5,
+    SND_STEP_V1Wav,SND_WAV_BITS_NOISE,
+    SND_STEP_RiseValue,64,
+    SND_STEP_CutoffLow,16,
+    SND_STEP_FallValue,64,
+    SND_STEP_CutoffHigh,16,
+    SND_STEP_End
+};
+
+unsigned char sfx_crash[100]= {
+    SND_STEP_Vol,15,
+    SND_STEP_V1AttDec,0,
+    SND_STEP_V1SusRel,240,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,0,
+    SND_STEP_V1PiHigh,0,
+
+    SND_STEP_End
+};
+
+unsigned char sfx_shortrumble[50]= {
+    SND_STEP_Vol,15,
+    SND_STEP_V1AttDec,0,
+    SND_STEP_V1SusRel,140,
+    SND_STEP_V1PiLow,10,
+    SND_STEP_V1PiHigh,4,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,10,
+    SND_STEP_V1PiHigh,2,
+    SND_STEP_V1Wav,129,
+    SND_STEP_V1PiLow,10,
+    SND_STEP_V1PiHigh,4,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,0,
+    SND_STEP_V1PiHigh,0,
+
+    SND_STEP_End
+};
+
+unsigned char sfx_test[100]= {
+    SND_STEP_Vol,15,
+    SND_STEP_V1AttDec,0,
+    SND_STEP_V1SusRel,140,
+    SND_STEP_V1PiLow,10,
+    SND_STEP_V1PiHigh,4,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,10,
+    SND_STEP_V1PiHigh,2,
+    SND_STEP_V1Wav,129,
+    SND_STEP_V1PiLow,10,
+    SND_STEP_V1PiHigh,4,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,0,
+    SND_STEP_V1PiHigh,0,
+
     SND_STEP_End
 };
 
