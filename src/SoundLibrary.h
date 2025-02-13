@@ -1,3 +1,18 @@
+/*
+ ___     _            ___ _                   
+| _ \___| |_ _ _ ___ / __(_)_ _  __ _ ___ _ _ 
+|   / -_)  _| '_/ _ \ (_ | | ' \/ _` / -_) '_|
+|_|_\___|\__|_|_\___/\___|_|_||_\__, \___|_|  
+ / __| | |  (_) |__ _ _ __ _ _ _|___/         
+| (__  | |__| | '_ \ '_/ _` | '_| || |        
+ \___| |____|_|_.__/_| \__,_|_|  \_, |        
+                                 |__/       
+
+Name   : SoundLibrary
+Purpose: Simple C-64 sound interface
+
+*/
+
 typedef struct {
 	unsigned int PitchLow;
 	unsigned int PitchHigh;
@@ -118,36 +133,46 @@ typedef struct {
 #define SND_SetVoice3PulseWidthHigh(pulsehigh); POKE(SND_PULSE_WIDTH_HIGH_3,pulsehigh);
 #define SND_SetVoice3PulseWidthLow(pulselow); POKE(SND_PULSE_WIDTH_LOW_3,pulselow);
 
-#define SND_End 0
-#define SND_Wait 255
-#define SND_V1Wav 1
-#define SND_V1PiHigh 2
-#define SND_V1PiLow 3
-#define SND_V1PlHigh 4
-#define SND_V1PlLow 5
-#define SND_V1AttDec 6
-#define SND_V1SusRel 7
-#define SND_V2Wav 8
-#define SND_V2PiHigh 9
-#define SND_V2PiLow 10
-#define SND_V2PlHigh 11
-#define SND_V2PlLow 12
-#define SND_V2AttDec 13
-#define SND_V2SusRel 14
-#define SND_V3Wav 15
-#define SND_V3PiHigh 16
-#define SND_V3PiLow 17
-#define SND_V3PlHigh 18
-#define SND_V3PlLow 19
-#define SND_V3AttDec 20
-#define SND_V3SusRel 21
-#define SND_Vol 22
-#define SND_V1Rise 23
-#define SND_Count 24
-#define SND_Repeat 15
+#define SND_SetVolumePassFilter(value); POKE(SND_VOLUME_PASS_FILTER_BITS,value);
+#define SND_SetResonanceBits(value); POKE(SND_FILER_ENABLE_RESONANCE_BITS,value);
 
+#define SND_SetCutoffLow(value); POKE(SND_CUTOFF_LOW,value);
+#define SND_SetCutoffHigh(value); POKE(SND_CUTOFF_HIGH,value);
 
-#define SND_Envelop
+#define SND_STEP_End 0
+#define SND_STEP_Wait 255
+#define SND_STEP_V1Wav 1
+#define SND_STEP_V1PiHigh 2
+#define SND_STEP_V1PiLow 3
+#define SND_STEP_V1PlHigh 4
+#define SND_STEP_V1PlLow 5
+#define SND_STEP_V1AttDec 6
+#define SND_STEP_V1SusRel 7
+#define SND_STEP_V2Wav 8
+#define SND_STEP_V2PiHigh 9
+#define SND_STEP_V2PiLow 10
+#define SND_STEP_V2PlHigh 11
+#define SND_STEP_V2PlLow 12
+#define SND_STEP_V2AttDec 13
+#define SND_STEP_V2SusRel 14
+#define SND_STEP_V3Wav 15
+#define SND_STEP_V3PiHigh 16
+#define SND_STEP_V3PiLow 17
+#define SND_STEP_V3PlHigh 18
+#define SND_STEP_V3PlLow 19
+#define SND_STEP_V3AttDec 20
+#define SND_STEP_V3SusRel 21
+#define SND_STEP_Vol 22
+#define SND_STEP_V1Rise 23
+#define SND_STEP_Count 24
+#define SND_STEP_Repeat 24
+#define SND_STEP_CutoffLow 25
+#define SND_STEP_CutoffHigh 26
+#define SND_STEP_RiseValue 27
+#define SND_STEP_VolumePassFilter 28
+#define SND_STEP_ResonanceBits 29
+#define SND_STEP_FallValue 30
+
 //=========================================================
 void SND_ClearSoundRegisters();
 unsigned char SND_GetEnv(unsigned char high,unsigned char low);

@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "test.h": "c",
-        "soundlibrary.h": "c"
+        "soundlibrary.h": "c",
+        "algorithm": "c",
+        "optional": "c",
+        "type_traits": "c",
+        "xtr1common": "c",
+        "xutility": "c"
     }
 }

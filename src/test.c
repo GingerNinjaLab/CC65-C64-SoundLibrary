@@ -16,6 +16,9 @@ extern unsigned char sfx[150];
 extern unsigned char sfx2[150];
 extern unsigned char sfx3[150];
 extern unsigned char sxf_switch[150];
+extern unsigned char sfx_lowBeep[150];
+extern unsigned char sfx_lowboop[150];
+extern unsigned char sfx_testing[150];
 
 unsigned char textBuffer[800];
 
@@ -37,12 +40,6 @@ int main (void)
     cprintf("sound library test\r\n");
     cprintf("==================\r\n");
 
-    while (1) {
-
-        k = cgetc();
-        c = InputStr(20, *textBuffer, 20, k);
-
-    }
     
     cprintf("1. zap\r\n");
     cprintf("2. ufo\r\n");
@@ -56,6 +53,8 @@ int main (void)
     cprintf("0. nasty\r\n");
     cprintf("a. bump\r\n");
     cprintf("b. buzz\r\n");
+    cprintf("c. low beep\r\n");
+    cprintf("d. low boop\r\n");
 
     
 
@@ -64,6 +63,8 @@ int main (void)
     while (1) {
 
         k = cgetc();
+
+        ShowPlaying(k);
 
         if (k=='1') { Shoot(); }
         if (k=='2') { Ufo(); }
@@ -77,11 +78,14 @@ int main (void)
         if (k=='0') { Nasty(); }
         if (k=='a') { Bump(); }
         if (k=='b') { Bump(); }
+        if (k=='c') { SND_PLay(sfx_lowBeep,200); }
+        if (k=='d') { SND_PLay(sfx_lowboop,200); }
 
         if (k=='t') {
-            Test();
+            SND_PLay(sfx_testing,200);
         }
 
+        ClearPlaying();
 
     }
 
@@ -89,8 +93,8 @@ int main (void)
 } 
 
 void Test() {
-    clrscr();
-    SND_PLay(sxf_switch,200);
+   // clrscr();
+   // SND_PLay(sxf_switch2,200);
 }
 
 void fgff(){
@@ -124,7 +128,6 @@ void fgff(){
 }
 
 void Buzz() {
-    ShowPlaying(k);
     SND_ClearSoundRegisters();
 
     SND_SetVolume(15);
@@ -144,11 +147,9 @@ void Buzz() {
     SND_SetVoice1AttackDecay(0);
     SND_SetVolume(0);
 
-    ClearPlaying();    
 }
 
 void Bump() {
-    ShowPlaying(k);
     SND_ClearSoundRegisters();
 
     SND_SetVolume(15);
@@ -167,7 +168,6 @@ void Bump() {
     SND_SetVoice1AttackDecay(0);
     SND_SetVolume(0);
 
-    ClearPlaying();
 }
 
 void Nasty() {
@@ -263,7 +263,6 @@ void Shoot() {
 }
 
 void Ufo() {
-    ShowPlaying(k);
     SND_SetVoice1Bits(SND_WAV_BITS_SAW);
     SND_SetVoice1AttackDecay(128);
     SND_SetVoice1SustainRelease(128);
@@ -275,7 +274,6 @@ void Ufo() {
     }
     SND_SetVoice1Bits(0);
     SND_SetVoice1AttackDecay(0);
-    ClearPlaying();
 }
 
 void Woosh() {
@@ -360,7 +358,6 @@ void Clunk() {
 }
 
 void Chime() {
-    ShowPlaying(k);
     SND_ClearSoundRegisters();
 
     SND_SetVolume(15);
@@ -408,7 +405,6 @@ void Chime() {
     }
     SND_SetVoice1Bits(0);
     SND_SetVoice1AttackDecay(0);
-    ClearPlaying();
 }
 
 void HighChime() {
@@ -474,12 +470,12 @@ void AlarmChime() {
 
 void ShowPlaying(unsigned char sound) {
     gotoxy(20,0);
-    cputc(sound);
+    cprintf("playing: %c",sound);
 }
 
 void ClearPlaying() {
     gotoxy(20,0);
-    cputc(' ');
+    cprintf("          ");
 }
 
 //C64 text routines
