@@ -60,7 +60,7 @@ void SND_PLay(unsigned char *arr,int size) {
     int i,t;
     unsigned char c,v,z,n,j,p;
     SND_ClearSoundRegisters();
-    SND_SetVolume(15);
+    SND_SetVolumePassFilter(15);
 
     i=0;
     while (i<size) {
@@ -116,7 +116,7 @@ void SND_PLay(unsigned char *arr,int size) {
             c=arr[i];
             i++;
             v=arr[i];
-            cprintf("snd_rise: %i - %i - %i",p,c,v);     
+      //      cprintf("snd_rise: %i - %i - %i",p,c,v);     
             for (z=0;z<p;z++) {
                 if (c==SND_STEP_CutoffHigh) { SND_SetCutoffHigh(z); }
                 if (c==SND_STEP_CutoffLow) { SND_SetCutoffLow(z); }
@@ -131,7 +131,7 @@ void SND_PLay(unsigned char *arr,int size) {
             c=arr[i];
             i++;
             v=arr[i];
-            cprintf("snd_fall: %i - %i - %i",p,c,v);     
+         //   cprintf("snd_fall: %i - %i - %i",p,c,v);     
             for (z=p;z>0;z--) {
                 if (c==SND_STEP_CutoffHigh) { SND_SetCutoffHigh(z); }
                 if (c==SND_STEP_CutoffLow) { SND_SetCutoffLow(z); }
@@ -158,12 +158,16 @@ void SND_PLay(unsigned char *arr,int size) {
             }
         }
 
-        if (c==SND_STEP_Vol) { SND_SetVolume(v); }
+        if (c==SND_STEP_Vol) { SND_SetVolumePassFilter(v); }
         i++;
         //Debugging output
 //        cprintf("c:%i / %i / %i \r\n",i,c,v);
+
+//for (z=0;z<255;z++) { 
+//}
+
     }
     SND_ClearSoundRegisters();
-    SND_SetVolume(0);
+    SND_SetVolumePassFilter(0);
 }
 

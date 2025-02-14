@@ -14,6 +14,9 @@ void AlarmChime();
 void Nasty();
 void Bump();
 void Buzz();
+void Swipe();
+void Swamp();
+void Block();
 
 void Test();
 

@@ -101,8 +101,6 @@ typedef struct {
 #define SND_HIGH_14 0b11100000
 #define SND_HIGH_15 0b11110000
 
-#define SND_SetVolume(vol); POKE(SND_VOLUME_PASS_FILTER_BITS,vol);
-
 #define SND_SetVoice1Bits(wavbits); POKE(SND_WAV_BITS_1,wavbits);
 #define SND_SetVoice1AttackDecay(AttackDecay); POKE(SND_DECAY_ATTACK_1,AttackDecay);
 #define SND_SetVoice1SustainRelease(SustainRelease); POKE(SND_RELEASE_SUSTAIN_1,SustainRelease);
