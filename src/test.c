@@ -24,6 +24,8 @@ extern unsigned char sfx_dooropen[100];
 extern unsigned char sfx_crash[100];
 extern unsigned char sfx_shortrumble[50];
 extern unsigned char sfx_fanfare[200];
+extern unsigned char sfx_boom[200];
+extern unsigned char sfx_kill[200];
 
 unsigned char textBuffer[800];
 
@@ -110,7 +112,8 @@ int main (void)
 
         if (k==' ') {
          //   SND_PLay(sfx_test,200);
-            Test();
+            SND_PLay(sfx_kill,200);
+//         Test();
         }
 
         ClearPlaying();
@@ -760,7 +763,7 @@ void AlarmChime() {
     SND_SetVoice1AttackDecay(4);
     SND_SetVoice1SustainRelease(12);
 
-    for (z=1;z<50;z++) {
+    for (z=1;z<30;z++) {
         f1=rand() % 100;
         SND_SetVoice1High(z);
         SND_SetVoice1Bits(23);

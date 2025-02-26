@@ -424,3 +424,46 @@ unsigned char sfx_fanfare[200]= {
 
     SND_STEP_End
 };
+
+unsigned char sfx_boom[100]= {
+    SND_STEP_Vol,15,
+    SND_STEP_V1PiHigh,1,
+    SND_STEP_V1AttDec,7,
+    SND_STEP_V1Wav,80,
+    SND_STEP_V1Wav,81,
+
+    SND_STEP_End
+};
+
+
+unsigned char sfx_kill[70]= {
+    SND_STEP_Vol,15,
+    SND_STEP_V1AttDec,0,
+    SND_STEP_V1SusRel,120,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,7,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,7,
+    SND_STEP_V1Wav,129,
+    SND_STEP_V1PiLow,25,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,1,
+    SND_STEP_V1PiHigh,14,
+    SND_STEP_V1Wav,129,
+    SND_STEP_V1PiLow,10,
+    SND_STEP_V1PiHigh,65,
+    SND_STEP_V1Wav,129,
+    SND_STEP_Wait,16,
+    SND_STEP_V1Wav,128,
+    SND_STEP_V1PiLow,0,
+    SND_STEP_V1PiHigh,0,
+    SND_STEP_V1Wav,0,
+    SND_STEP_End
+};
+
