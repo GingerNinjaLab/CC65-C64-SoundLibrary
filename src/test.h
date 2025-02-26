@@ -17,6 +17,12 @@ void Buzz();
 void Swipe();
 void Swamp();
 void Block();
+void Crash();
+void Pling();
+void Zip();
+void ToneRampDown();
+void ZapBomb();
+void ThrustDown();
 
 void Test();
 
