@@ -189,11 +189,11 @@ unsigned char sfx_lowBeep[150]= {
     SND_STEP_V1Wav,SND_WAV_BITS_SAW,
     SND_STEP_V1AttDec,SND_HIGH_03 + SND_LOW_01,
     SND_STEP_V1SusRel,SND_HIGH_10 + SND_LOW_00,
-    SND_STEP_Count,3,
+    SND_STEP_Count,100,
     SND_STEP_V1PiLow,1,
     SND_STEP_V1PiHigh,5,
-    SND_STEP_Wait,32,
-    SND_STEP_Repeat,6,    
+    SND_STEP_Wait,128,
+    SND_STEP_Repeat,12,    
     SND_STEP_End
 };
 
@@ -202,10 +202,10 @@ unsigned char sfx_lowboop[150]= {
     SND_STEP_V1Wav,SND_WAV_BITS_TRI,
     SND_STEP_V1AttDec,SND_HIGH_09 + SND_LOW_04,
     SND_STEP_V1SusRel,SND_HIGH_02 + SND_LOW_03,
-    SND_STEP_Count,5,
+    SND_STEP_Count,100,
     SND_STEP_V1PiLow,10,
     SND_STEP_V1PiHigh,15,
-    SND_STEP_Wait,40,
+    SND_STEP_Wait,128,
     SND_STEP_Repeat,6,    
     SND_STEP_End
 };

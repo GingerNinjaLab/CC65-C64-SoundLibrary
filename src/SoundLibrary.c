@@ -16,7 +16,11 @@ Purpose: Simple C-64 sound interface
 #include "unity.h"
 #include "SoundLibrary.h"
 
+//Show player debug information
+#define __SNDPLAYERDEBUG__
+
 unsigned char EnvelopeHigh[16]= {0,16,32,48,64,80,96,112,128,144,160,176,192,208,224,240};
+unsigned char sndK;
 
 //=========================================================
 //Sound routines
@@ -59,6 +63,11 @@ unsigned char SND_GetEnv(unsigned char high,unsigned char low) {
 void SND_PLay(unsigned char *arr,int size) {
     int i,t;
     unsigned char c,v,z,n,j,p;
+    #ifdef __SNDPLAYERDEBUG__
+        clrscr();
+        cprintf("snd_play: \r\n");     
+    #endif
+
     SND_ClearSoundRegisters();
     SND_SetVolumePassFilter(15);
 
@@ -72,13 +81,21 @@ void SND_PLay(unsigned char *arr,int size) {
         v=arr[i];
 
         if (c==SND_STEP_Wait) { 
+            #ifdef __SNDPLAYERDEBUG__
+                cprintf("wait: \r\n");     
+            #endif
             for (z=0;z<255;z++) { 
                 for (n=0;n<10;n++) {
 
                 }
             }
         }
-        if (c==SND_STEP_V1Wav) { SND_SetVoice1Bits(v); }
+        if (c==SND_STEP_V1Wav) { 
+            SND_SetVoice1Bits(v); 
+            #ifdef __SNDPLAYERDEBUG__
+                cprintf("v1bits:%i\r\n",v);     
+            #endif
+        }
         if (c==SND_STEP_V1PiHigh) { SND_SetVoice1High(v); }
         if (c==SND_STEP_V1PiLow) { SND_SetVoice1Low(v); }
         if (c==SND_STEP_V1PlHigh) { SND_SetVoice1PulseWidthHigh(v); }
@@ -105,12 +122,20 @@ void SND_PLay(unsigned char *arr,int size) {
         if (c==SND_STEP_CutoffLow) { SND_SetCutoffLow(v); }
         if (c==SND_STEP_CutoffHigh) { SND_SetCutoffHigh(v); }
 
-        if (c==SND_STEP_VolumePassFilter) { SND_SetVolumePassFilter(v); }
+        if (c==SND_STEP_VolumePassFilter) { 
+            SND_SetVolumePassFilter(v);
+            #ifdef __SNDPLAYERDEBUG__
+                cprintf("volpassfilter:%i\r\n",v);     
+            #endif
+        }
         if (c==SND_STEP_ResonanceBits) { SND_SetResonanceBits(v); }
 
         if (c==SND_STEP_V1Rise) { for (z=0;z<v;z++) { SND_SetVoice1High(z) } }
 
         if (c==SND_STEP_RiseValue) { 
+            #ifdef __SNDPLAYERDEBUG__
+                cprintf("rise: %i - %i - %i\r\n",p,c,v);     
+            #endif
             p=v;
             i++;
             c=arr[i];
@@ -131,7 +156,9 @@ void SND_PLay(unsigned char *arr,int size) {
             c=arr[i];
             i++;
             v=arr[i];
-         //   cprintf("snd_fall: %i - %i - %i",p,c,v);     
+            #ifdef __SNDPLAYERDEBUG__
+                cprintf("fall: %i - %i - %i\r\n",p,c,v);     
+            #endif
             for (z=p;z>0;z--) {
                 if (c==SND_STEP_CutoffHigh) { SND_SetCutoffHigh(z); }
                 if (c==SND_STEP_CutoffLow) { SND_SetCutoffLow(z); }
@@ -143,22 +170,27 @@ void SND_PLay(unsigned char *arr,int size) {
 
         if (c==SND_STEP_Count) { 
             j=v;
-          //  cprintf("Count: %i",j);     
-
+            #ifdef __SNDPLAYERDEBUG__
+                cprintf("count: %i\r\n",j);     
+            #endif
         }
 
         if (c==SND_STEP_Repeat) { 
             j=j-1;
-          //  cprintf("SND_Repeat: %i",j);     
+            #ifdef __SNDPLAYERDEBUG__
+                cprintf("repeat: %i\r\n",j);     
+            #endif
             if (j==0) {
                 i++;           
-            //    cprintf("Repeat done");     
+                #ifdef __SNDPLAYERDEBUG__
+                    cprintf("repeat: done\r\n");     
+                #endif
             } else {
                 i=i-v;
             }
         }
 
-        if (c==SND_STEP_Vol) { SND_SetVolumePassFilter(v); }
+     //   if (c==SND_STEP_Vol) { SND_SetVolumePassFilter(v); }
         i++;
         //Debugging output
 //        cprintf("c:%i / %i / %i \r\n",i,c,v);
@@ -169,5 +201,9 @@ void SND_PLay(unsigned char *arr,int size) {
     }
     SND_ClearSoundRegisters();
     SND_SetVolumePassFilter(0);
+
+    sndK = cgetc();
+
+
 }
 
