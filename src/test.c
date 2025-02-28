@@ -26,6 +26,7 @@ extern unsigned char sfx_shortrumble[50];
 extern unsigned char sfx_fanfare[200];
 extern unsigned char sfx_boom[200];
 extern unsigned char sfx_kill[200];
+extern unsigned char sfx_slidedown[200];
 
 unsigned char textBuffer[800];
 
@@ -112,7 +113,7 @@ int main (void)
 
         if (k==' ') {
          //   SND_PLay(sfx_test,200);
-            SND_PLay(sfx_kill,200);
+            SND_PLay(sfx_slidedown,200);
 //         Test();
         }
 
@@ -137,8 +138,8 @@ void Test() {
         SND_SetVoice1Low(n);
         SND_SetVoice2High(4);
         SND_SetVoice2Low(n/2);
-        for (h=0;h<32;h++) {
-
+        for (h=0;h<4000;h++) {
+            j=0;
         }
     }
     SND_SetVoice1Bits(0);
