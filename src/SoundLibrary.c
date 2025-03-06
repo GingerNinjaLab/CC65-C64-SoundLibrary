@@ -17,7 +17,7 @@ Purpose: Simple C-64 sound interface
 #include "SoundLibrary.h"
 
 //Show player debug information
-#define __SNDPLAYERDEBUG__
+//#define __SNDPLAYERDEBUG__
 
 unsigned char EnvelopeHigh[16]= {0,16,32,48,64,80,96,112,128,144,160,176,192,208,224,240};
 unsigned char sndK;
@@ -102,6 +102,8 @@ void SND_PLay(unsigned char *arr,int size) {
         if (c==SND_STEP_V1PlLow) { SND_SetVoice1PulseWidthLow(v); }
         if (c==SND_STEP_V1AttDec) { SND_SetVoice1AttackDecay(v); }
         if (c==SND_STEP_V1SusRel) { SND_SetVoice1SustainRelease(v); }
+        if (c==SND_STEP_V1PulseWidthLow) { SND_SetVoice1PulseWidthLow(v); }
+        if (c==SND_STEP_V1PulseWidthHigh) { SND_SetVoice1PulseWidthHigh(v); }
 
         if (c==SND_STEP_V2Wav) { SND_SetVoice2Bits(v); }
         if (c==SND_STEP_V2PiHigh) { SND_SetVoice2High(v); }
@@ -110,6 +112,8 @@ void SND_PLay(unsigned char *arr,int size) {
         if (c==SND_STEP_V2PlLow) { SND_SetVoice2PulseWidthLow(v); }
         if (c==SND_STEP_V2AttDec) { SND_SetVoice2AttackDecay(v); }
         if (c==SND_STEP_V2SusRel) { SND_SetVoice2SustainRelease(v); }
+        if (c==SND_STEP_V2PulseWidthLow) { SND_SetVoice2PulseWidthLow(v); }
+        if (c==SND_STEP_V2PulseWidthHigh) { SND_SetVoice2PulseWidthHigh(v); }
 
         if (c==SND_STEP_V3Wav) { SND_SetVoice3Bits(v); }
         if (c==SND_STEP_V3PiHigh) { SND_SetVoice3High(v); }
@@ -118,6 +122,8 @@ void SND_PLay(unsigned char *arr,int size) {
         if (c==SND_STEP_V3PlLow) { SND_SetVoice3PulseWidthLow(v); }
         if (c==SND_STEP_V3AttDec) { SND_SetVoice3AttackDecay(v); }
         if (c==SND_STEP_V3SusRel) { SND_SetVoice3SustainRelease(v); }
+        if (c==SND_STEP_V3PulseWidthLow) { SND_SetVoice3PulseWidthLow(v); }
+        if (c==SND_STEP_V3PulseWidthHigh) { SND_SetVoice3PulseWidthHigh(v); }
 
         if (c==SND_STEP_CutoffLow) { SND_SetCutoffLow(v); }
         if (c==SND_STEP_CutoffHigh) { SND_SetCutoffHigh(v); }
@@ -202,7 +208,10 @@ void SND_PLay(unsigned char *arr,int size) {
     SND_ClearSoundRegisters();
     SND_SetVolumePassFilter(0);
 
+    #ifdef __SNDPLAYERDEBUG__
     sndK = cgetc();
+    #endif
+
 
 
 }
