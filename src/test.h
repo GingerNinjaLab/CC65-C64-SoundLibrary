@@ -23,6 +23,7 @@ void Zip();
 void ToneRampDown();
 void ZapBomb();
 void ThrustDown();
+void LowDumDum();
 
 void Test();
 

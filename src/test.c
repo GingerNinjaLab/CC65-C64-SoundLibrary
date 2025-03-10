@@ -50,15 +50,15 @@ int main (void)
     cprintf("==================\r\n");
 
     
-    cprintf("1. zap               m. clunk2\r\n");
-    cprintf("2. ufo               n. crash\r\n");
-    cprintf("3. woosh             o. pling\r\n");
-    cprintf("4. siren             p. zip\r\n");
-    cprintf("5. comp music        q. ramp down\r\n");
-    cprintf("6. chime             r. zap bomb\r\n");
-    cprintf("7. clunk             s. open chest\r\n");
-    cprintf("8. high chime        t. thrust\r\n");
-    cprintf("9. alarm chime\r\n");
+    cprintf("1. zap             m. clunk2\r\n");
+    cprintf("2. ufo             n. crash\r\n");
+    cprintf("3. woosh           o. pling\r\n");
+    cprintf("4. siren           p. zip\r\n");
+    cprintf("5. comp music      q. ramp down\r\n");
+    cprintf("6. chime           r. zap bomb\r\n");
+    cprintf("7. clunk           s. open chest\r\n");
+    cprintf("8. high chime      t. thrust\r\n");
+    cprintf("9. alarm chime     u. low dum dum\r\n");
     cprintf("0. nasty\r\n");
     cprintf("a. bump\r\n");
     cprintf("b. buzz\r\n");
@@ -109,13 +109,14 @@ int main (void)
         if (k=='r') { ZapBomb(); }
         if (k=='s') { SND_PLay(sfx_chestopen,30); }
         if (k=='t') { ThrustDown(); }
+        if (k=='u') { LowDumDum(); }
 
         if (k=='z') { SND_PLay(sfx_fanfare,200); }
 
         if (k==' ') {
-            SND_PLay(sfx_test,200);
+//            SND_PLay(sfx_test,200);
          //   SND_PLay(sfx_chestopen,200);
-//         Test();
+         Test();
         }
 
         ClearPlaying();
@@ -141,13 +142,20 @@ void Test() {
     SND_SetVoice3AttackDecay(79);
     SND_SetVoice3SustainRelease(248);
     SND_SetVolumePassFilter(15);
- 
+
+    l=0;
     for (n=1;n<20;n++) {
-        l = rand() % (3);
-        if (l==1) {
+//        l = rand() % (2);
+        if (l==0) {
             SND_SetVoice1Bits(0);
             SND_SetVoice1Low(48);
             SND_SetVoice1High(4);
+            SND_SetVoice1Bits(65);
+        }
+        if (l==1) {
+            SND_SetVoice1Bits(0);
+            SND_SetVoice1Low(152);
+            SND_SetVoice1High(5);
             SND_SetVoice1Bits(65);
         }
         if (l==2) {
@@ -156,27 +164,83 @@ void Test() {
             SND_SetVoice1High(5);
             SND_SetVoice1Bits(65);
         }
-        if (l==3) {
+        l++;
+        if (l==2) {
+            l=0;
+        }
+        for (h=10;h<250;h+=4) {
+            SND_SetVoice1PulseWidthLow(h);
+
+        }
+        SND_SetVoice1Bits(64);
+        for (h=10;h<255;h++) {
+
+        }
+
+    }
+    
+    SND_SetVoice1AttackDecay(0);
+    SND_SetVoice2Bits(0);
+    SND_SetVoice2AttackDecay(0);
+    SND_SetVoice3Bits(0);
+    SND_SetVoice3AttackDecay(0);
+    ClearPlaying();
+
+}
+
+void LowDumDum() {
+    ShowPlaying(k);
+    SND_ClearSoundRegisters();
+    SND_SetVoice1PulseWidthLow(128);
+    SND_SetVoice1PulseWidthHigh(7);
+    SND_SetVoice1AttackDecay(79);
+    SND_SetVoice1SustainRelease(248);
+    SND_SetVoice2PulseWidthLow(128);
+    SND_SetVoice2PulseWidthHigh(7);
+    SND_SetVoice2AttackDecay(79);
+    SND_SetVoice2SustainRelease(248);
+    SND_SetVoice3PulseWidthLow(128);
+    SND_SetVoice3PulseWidthHigh(7);
+    SND_SetVoice3AttackDecay(79);
+    SND_SetVoice3SustainRelease(248);
+    SND_SetVolumePassFilter(15);
+
+    l=0;
+    for (n=1;n<20;n++) {
+//        l = rand() % (2);
+        if (l==0) {
+            SND_SetVoice1Bits(0);
+            SND_SetVoice1Low(48);
+            SND_SetVoice1High(4);
+            SND_SetVoice1Bits(65);
+        }
+        if (l==1) {
             SND_SetVoice1Bits(0);
             SND_SetVoice1Low(152);
             SND_SetVoice1High(5);
             SND_SetVoice1Bits(65);
         }
-
-        for (h=1;h<16;h++) {
+        if (l==2) {
+            SND_SetVoice1Bits(0);
+            SND_SetVoice1Low(152);
+            SND_SetVoice1High(5);
+            SND_SetVoice1Bits(65);
+        }
+        l++;
+        if (l==2) {
+            l=0;
+        }
+        for (h=10;h<250;h+=4) {
+            SND_SetVoice1PulseWidthLow(h);
 
         }
-        SND_SetVoice1High(4);
-        SND_SetVoice1Low(n);
-        SND_SetVoice2High(8);
-        SND_SetVoice2Low(n/2);
-        SND_SetVoice3High(12);
-        SND_SetVoice3Low(n/3);
-        for (h=0;h<200;h++) {
-            j=0;
+        SND_SetVoice1Bits(64);
+        for (h=10;h<255;h++) {
+
         }
+
     }
-    SND_SetVoice1Bits(0);
+    
     SND_SetVoice1AttackDecay(0);
     SND_SetVoice2Bits(0);
     SND_SetVoice2AttackDecay(0);
