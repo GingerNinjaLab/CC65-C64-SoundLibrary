@@ -28,6 +28,7 @@ extern unsigned char sfx_boom[200];
 extern unsigned char sfx_kill[200];
 extern unsigned char sfx_slidedown[200];
 extern unsigned char sfx_chestopen[30];
+extern unsigned char sfx_welcome[103];
 
 unsigned char textBuffer[800];
 
@@ -59,10 +60,10 @@ int main (void)
     cprintf("7. clunk           s. open chest\r\n");
     cprintf("8. high chime      t. thrust\r\n");
     cprintf("9. alarm chime     u. low dum dum\r\n");
-    cprintf("0. nasty\r\n");
-    cprintf("a. bump\r\n");
-    cprintf("b. buzz\r\n");
-    cprintf("c. low beep\r\n");
+    cprintf("0. nasty           v. zop\r\n");
+    cprintf("a. bump            w. entry\r\n");
+    cprintf("b. buzz            x. bring\r\n");
+    cprintf("c. low beep        y. stemp dum\r\n");
     cprintf("d. low boop\r\n");
     cprintf("e. buzz zap\r\n");
     cprintf("f. door open\r\n");
@@ -110,13 +111,17 @@ int main (void)
         if (k=='s') { SND_PLay(sfx_chestopen,30); }
         if (k=='t') { ThrustDown(); }
         if (k=='u') { LowDumDum(); }
+        if (k=='v') { Zop(); }
+        if (k=='w') { Entry(); }
+        if (k=='x') { Bring(); }
+        if (k=='y') { StepDum(); }
 
         if (k=='z') { SND_PLay(sfx_fanfare,200); }
 
         if (k==' ') {
 //            SND_PLay(sfx_test,200);
-         //   SND_PLay(sfx_chestopen,200);
-         Test();
+            SND_PLay(sfx_welcome,200);
+         //Test();
         }
 
         ClearPlaying();
@@ -352,6 +357,33 @@ void Zip() {
     ClearPlaying();
 }
 
+void Zop() {
+    ShowPlaying(k);
+    SND_ClearSoundRegisters();
+ 
+    for (n=0;n<15;n++) {
+        SND_SetVolumePassFilter(n);
+        SND_SetVoice1Bits(SND_WAV_BITS_SAW);
+        SND_SetVoice1AttackDecay(15);
+        SND_SetVoice1High(5);
+        SND_SetVoice1Low(0);
+
+        SND_SetVoice2Bits(SND_WAV_BITS_TRI);
+        SND_SetVoice2AttackDecay(15);
+        SND_SetVoice2High(5);
+        SND_SetVoice2Low(16);
+
+        for (h=0;h<255;h++) {
+
+        }
+    }
+    SND_SetVoice1Bits(0);
+    SND_SetVoice1AttackDecay(0);
+    SND_SetVoice2Bits(0);
+    SND_SetVoice2AttackDecay(0);
+    ClearPlaying();
+}
+
 void Pling() {
     ShowPlaying(k);
     SND_ClearSoundRegisters();
@@ -420,11 +452,11 @@ void Swamp() {
     SND_ClearSoundRegisters();
  
  
-     SND_SetVolumePassFilter(15);
-     SND_SetVoice1PulseWidthHigh(8);
-     SND_SetVoice1AttackDecay(51);
-     SND_SetVoice1SustainRelease(240);
-     SND_SetVoice1Bits(65);
+    SND_SetVolumePassFilter(15);
+    SND_SetVoice1PulseWidthHigh(8);
+    SND_SetVoice1AttackDecay(51);
+    SND_SetVoice1SustainRelease(240);
+    SND_SetVoice1Bits(65);
  
     SND_SetVolumePassFilter(SND_WAV_BITS_PULSE + SND_WAV_BITS_SAW);
     for (n=0;n<10;n++) {
@@ -441,14 +473,13 @@ void Swamp() {
 void Swipe() {
     ShowPlaying(k);
     SND_ClearSoundRegisters();
- 
- 
-     SND_SetVolumePassFilter(15);
-     SND_SetVoice1PulseWidthHigh(8);
-     SND_SetVoice1AttackDecay(51);
-     SND_SetVoice1SustainRelease(240);
-     SND_SetVoice1Bits(65);
- 
+
+    SND_SetVolumePassFilter(15);
+    SND_SetVoice1PulseWidthHigh(8);
+    SND_SetVoice1AttackDecay(51);
+    SND_SetVoice1SustainRelease(240);
+    SND_SetVoice1Bits(65);
+
     SND_SetVolumePassFilter(15);
     for (n=0;n<10;n++) {
         SND_SetVoice1High(32+5*n);
@@ -536,12 +567,12 @@ void Buzz() {
     SND_SetVolumePassFilter(15);
     SND_SetVoice1PulseWidthLow(128);
     SND_SetVoice1PulseWidthHigh(8);
-    SND_SetVoice1AttackDecay(53);
-    SND_SetVoice1SustainRelease(85);
+    SND_SetVoice1AttackDecay(200);
+    SND_SetVoice1SustainRelease(0);
     SND_SetVoice1Bits(SND_WAV_BITS_SAW);
     
-    for (z=1;z<50;z++) {
-        for (n=1;n<100;n++) {
+    for (z=1;z<255;z++) {
+        for (n=160;n>0;n--) {
             SND_SetVoice1HighLow(2,n);
         }
     }
@@ -879,6 +910,138 @@ void AlarmChime() {
     SND_SetVoice1High(30);
     ClearPlaying();
 }
+
+void Entry() {
+    ShowPlaying(k);
+    SND_ClearSoundRegisters();
+    SND_SetVolumePassFilter(15);
+    SND_SetVoice1PulseWidthLow(128);
+    SND_SetVoice1PulseWidthHigh(7);
+    SND_SetVoice1AttackDecay(79);
+    SND_SetVoice1SustainRelease(248);
+    SND_SetVoice2PulseWidthLow(128);
+    SND_SetVoice2PulseWidthHigh(7);
+    SND_SetVoice2AttackDecay(79);
+    SND_SetVoice2SustainRelease(248);
+    SND_SetVoice3PulseWidthLow(128);
+    SND_SetVoice3PulseWidthHigh(7);
+    SND_SetVoice3AttackDecay(79);
+    SND_SetVoice3SustainRelease(248);
+    SND_SetVolumePassFilter(15);
+
+    l=0;
+    for (n=1;n<200;n++) {
+        l=n/15;
+//        l = rand() % (2);
+        if (l==0) {
+            SND_SetVoice1Bits(0);
+            SND_SetVoice1Low(48);
+            SND_SetVoice1High(14-l);
+            SND_SetVoice1Bits(65);
+        }
+        if (l==1) {
+            SND_SetVoice1Bits(0);
+            SND_SetVoice1Low(152);
+            SND_SetVoice1High(15-l);
+            SND_SetVoice1Bits(65);
+        }
+        if (l==2) {
+            SND_SetVoice1Bits(0);
+            SND_SetVoice1Low(152);
+            SND_SetVoice1High(15-l);
+            SND_SetVoice1Bits(65);
+        }
+        l++;
+        if (l==2) {
+            l=0;
+        }
+        for (h=10;h<250;h+=4) {
+            SND_SetVoice1PulseWidthLow(h);
+
+        }
+        SND_SetVoice1Bits(64);
+        for (h=10;h<255;h++) {
+
+        }
+
+    }
+    
+    SND_SetVoice1AttackDecay(0);
+    SND_SetVoice2Bits(0);
+    SND_SetVoice2AttackDecay(0);
+    SND_SetVoice3Bits(0);
+    SND_SetVoice3AttackDecay(0);
+    ClearPlaying();
+
+}
+
+void Bring() {
+    SND_ClearSoundRegisters();
+    SND_SetVolumePassFilter(15);
+    SND_SetVoice1AttackDecay(15);
+    SND_SetVoice2AttackDecay(15);
+    SND_SetVoice3AttackDecay(15);
+    SND_SetVoice1SustainRelease(107);
+    SND_SetVoice2SustainRelease(107);
+    SND_SetVoice3SustainRelease(107);
+    SND_SetVoice3Low(50);
+    SND_SetVoice3High(50);
+    SND_SetVoice1Bits(33);
+    SND_SetVoice2Bits(23);
+    SND_SetVoice3Bits(23);
+
+    for (h=10;h<50;h++) {
+        SND_SetVoice1PulseWidthLow(h);
+        for (n=30;n>1;n-=5) {
+            SND_SetVoice2High(n);
+            for (l=0;l<2;l++) {
+
+            }
+        }
+        for (l=0;l<32;l++) {
+
+        }
+    }
+
+    SND_SetVoice1Bits(32);
+    SND_SetVoice2Bits(32);
+    SND_SetVoice3Bits(32);
+
+}
+
+void StepDum() {
+    SND_ClearSoundRegisters();
+    SND_SetVolumePassFilter(15);
+    SND_SetVoice1AttackDecay(8);
+    SND_SetVoice1SustainRelease(255);
+    SND_SetVoice1Bits(21);
+    for (h=1;h<5;h++) {
+        f1=20;
+        for (n=1;n<4;n++) {
+            f2=100;
+            for (z=0;z<1000;z++) {
+
+            }
+            SND_SetVoice1High(f1);
+            for (l=1;l<6;l++) {
+                SND_SetVoice3High(f2);
+                f2=f2/10;
+                f1++;
+                for (z=0;z<1000;z++) {
+
+                }
+            }
+        }
+        SND_SetVolumePassFilter(15-(h*3));
+    }    
+    SND_SetVoice1SustainRelease(15);
+}
+
+/*
+=======================================================================
+=======================================================================
+=======================================================================
+*/
 
 void ShowPlaying(unsigned char sound) {
     gotoxy(20,0);

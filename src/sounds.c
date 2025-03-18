@@ -549,3 +549,80 @@ unsigned char sfx_slidedown[200]= {
     SND_STEP_End
 };
 
+
+
+unsigned char sfx_welcome[122]= {
+    SND_STEP_Vol,15,
+    SND_STEP_V1AttDec,8,
+    SND_STEP_V1SusRel,255,
+    SND_STEP_V1Wav,21,
+
+    SND_STEP_Count,4,
+
+    SND_STEP_V1PiHigh,20,
+    SND_STEP_V3PiHigh,100,
+    SND_STEP_V3PiHigh,10,
+    SND_STEP_V3PiHigh,1,
+    SND_STEP_V3PiHigh,0,
+    SND_STEP_Wait,255,
+
+    SND_STEP_V1PiHigh,21,
+    SND_STEP_V3PiHigh,100,
+    SND_STEP_V3PiHigh,10,
+    SND_STEP_V3PiHigh,1,
+    SND_STEP_V3PiHigh,0,
+    SND_STEP_Wait,255,
+
+    SND_STEP_V1PiHigh,22,
+    SND_STEP_V3PiHigh,100,
+    SND_STEP_V3PiHigh,10,
+    SND_STEP_V3PiHigh,1,
+    SND_STEP_V3PiHigh,0,
+    SND_STEP_Wait,255,
+
+    SND_STEP_V1PiHigh,23,
+    SND_STEP_V3PiHigh,100,
+    SND_STEP_V3PiHigh,10,
+    SND_STEP_V3PiHigh,1,
+    SND_STEP_V3PiHigh,0,
+    SND_STEP_Wait,255,
+
+    SND_STEP_V1PiHigh,24,
+    SND_STEP_V3PiHigh,100,
+    SND_STEP_V3PiHigh,10,
+    SND_STEP_V3PiHigh,1,
+    SND_STEP_V3PiHigh,0,
+    SND_STEP_Wait,255,
+
+    SND_STEP_V1PiHigh,26,
+    SND_STEP_V3PiHigh,100,
+    SND_STEP_V3PiHigh,10,
+    SND_STEP_V3PiHigh,1,
+    SND_STEP_V3PiHigh,0,
+    SND_STEP_Wait,255,
+
+    SND_STEP_V1PiHigh,28,
+    SND_STEP_V3PiHigh,100,
+    SND_STEP_V3PiHigh,10,
+    SND_STEP_V3PiHigh,1,
+    SND_STEP_V3PiHigh,0,
+    SND_STEP_Wait,255,
+
+    SND_STEP_V1PiHigh,31,
+    SND_STEP_V3PiHigh,100,
+    SND_STEP_V3PiHigh,10,
+    SND_STEP_V3PiHigh,1,
+    SND_STEP_V3PiHigh,0,
+    SND_STEP_Wait,255,
+
+    SND_STEP_V1PiHigh,33,
+    SND_STEP_V3PiHigh,100,
+    SND_STEP_V3PiHigh,10,
+    SND_STEP_V3PiHigh,1,
+    SND_STEP_V3PiHigh,0,
+    SND_STEP_Wait,255,
+
+    SND_STEP_Repeat,108,   
+    SND_STEP_End
+};
+

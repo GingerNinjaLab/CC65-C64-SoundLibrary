@@ -24,8 +24,11 @@ void ToneRampDown();
 void ZapBomb();
 void ThrustDown();
 void LowDumDum();
-
+void Zop();
 void Test();
+void Entry();
+void Bring();
+void StepDum();
 
 void Keyboard();
 
